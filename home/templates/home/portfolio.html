@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Projects</title>
+  <link rel="stylesheet" href="{% static 'home/css/styles.css' %}">
+</head>
+<body>
+
+<h2 class="text-center">My Projects</h2>
+<div class="row">
+  {% for project in projects %}
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        {% if project.image %}
+          <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ project.title }}</h5>
+          <p class="card-text">{{ project.description }}</p>
+          {% if project.link %}
+            <a href="{{ project.link }}" target="_blank" class="btn btn-primary">View Project</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+</body>
+</html>
